@@ -9,5 +9,5 @@ import java.time.LocalDate;
 public class Timestamp implements Serializable {
     private String title;
     private LocalDate timeLabel;
-
+    private Integer progress;
 }

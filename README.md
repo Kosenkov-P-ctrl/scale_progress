@@ -1,4 +1,4 @@
-# scale_progress
+# Progress Bar
 ![изображение](https://user-images.githubusercontent.com/79561283/210964649-b3ff2447-b204-48f5-825e-8377116479b8.png)
 
 

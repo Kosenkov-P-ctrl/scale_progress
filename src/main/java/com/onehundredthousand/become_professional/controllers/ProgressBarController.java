@@ -46,7 +46,7 @@ public class ProgressBarController {
         return ResponseEntity.ok().header("Location", location.toString()).build();
     }
 
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
+    @RequestMapping(value="/", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<?> createProgressBar(@Valid @RequestBody ProgressBar progressBar){
         ProgressBar result = progressBarRepository.save(progressBar);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(result.getId()).toUri();

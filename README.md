@@ -28,6 +28,6 @@ To build and run the project, follow these steps:
 - Navigate to the project directory: cd scale_progress
 - Build the project: mvn clean install
 - Run the project: mvn spring-boot:run
--- Or up with Docker 
+- - Or up with Docker 
 
 -> The application will be available at http://localhost:8080.

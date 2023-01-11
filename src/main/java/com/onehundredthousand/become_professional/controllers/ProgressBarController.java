@@ -11,6 +11,7 @@ import java.net.URI;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/v1/progressbar")
 public class ProgressBarController {
     private final ProgressBarRepository progressBarRepository;
 

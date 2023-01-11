@@ -21,7 +21,6 @@ public class ProgressBar {
     @NotNull
     private Timestamp startProgress;
     private Timestamp tempProgress;
-
     @PrePersist
     void onCreate(){
         this.setStartProgress(new Timestamp(System.currentTimeMillis()));

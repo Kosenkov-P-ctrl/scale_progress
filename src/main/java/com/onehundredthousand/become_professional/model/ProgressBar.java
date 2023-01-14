@@ -21,6 +21,10 @@ public class ProgressBar {
     @NotNull
     private Timestamp startProgress;
     private Timestamp tempProgress;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @PrePersist
     void onCreate(){
         this.setStartProgress(new Timestamp(System.currentTimeMillis()));

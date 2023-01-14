@@ -1,8 +1,10 @@
 package com.onehundredthousand.become_professional.controllers;
 
 import com.onehundredthousand.become_professional.model.ProgressBar;
+import com.onehundredthousand.become_professional.model.User;
 import com.onehundredthousand.become_professional.repository.ProgressBarRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -20,8 +22,8 @@ public class ProgressBarController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<Iterable<ProgressBar>> getProgressBar(){
-        return ResponseEntity.ok(progressBarRepository.findAll());
+    public ResponseEntity<Iterable<ProgressBar>> getProgressBars(){
+        return ResponseEntity.ok(progressBarRepository.findAllByUserId(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()));
     }
 
     @GetMapping("/{id}")
@@ -48,7 +50,9 @@ public class ProgressBarController {
     }
 
     @RequestMapping(value="/", method = {RequestMethod.POST, RequestMethod.PUT})
-    public ResponseEntity<?> createProgressBar(@Valid @RequestBody ProgressBar progressBar){
+    public ResponseEntity<?> createProgressBar(){ //@Valid @RequestBody ProgressBar progressBar
+        ProgressBar progressBar = new ProgressBar();
+        progressBar.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         ProgressBar result = progressBarRepository.save(progressBar);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(result.getId()).toUri();
         return ResponseEntity.created(location).build();

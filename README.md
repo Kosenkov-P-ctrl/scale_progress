@@ -15,6 +15,7 @@
 - BCrypt
 - Maven
 - Docker
+- OpenApi
 
 ## Getting Started
 To get started with this project, you will need to have the following installed on your local machine:

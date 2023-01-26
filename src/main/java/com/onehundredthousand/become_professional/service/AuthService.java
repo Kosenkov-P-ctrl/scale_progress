@@ -12,9 +12,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Logger;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
+    private final Logger logger = Logger.getLogger(AuthService.class.getName());
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -30,6 +33,7 @@ public class AuthService {
                 .build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        logger.info(String.format("Creating a new USER with id %s", user.getId()) );
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();

@@ -8,8 +8,5 @@ import java.util.Optional;
 
 public interface ProgressBarRepository extends CrudRepository<ProgressBar, String> {
 
-
     Iterable<ProgressBar> findAllByUserId(String id);
-
-
 }
